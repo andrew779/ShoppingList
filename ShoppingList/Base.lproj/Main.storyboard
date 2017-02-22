@@ -81,36 +81,56 @@
                                 <rect key="frame" x="0.0" y="150" width="363" height="425"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="67" id="7a1-lN-3Tr">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="67" id="7a1-lN-3Tr" customClass="ItemCell" customModule="ShoppingList" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="363" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7a1-lN-3Tr" id="1cu-PA-5qv">
-                                            <rect key="frame" x="0.0" y="0.0" width="363" height="66"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="363" height="66.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Whole Wheat Bread" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BuI-Cq-yVg">
-                                                    <rect key="frame" x="8" y="23" width="153" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Whole Wheat Bread" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BuI-Cq-yVg">
+                                                    <rect key="frame" x="18" y="25" width="158" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mIM-P5-QqH">
-                                                    <rect key="frame" x="293" y="23" width="70" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mIM-P5-QqH">
+                                                    <rect key="frame" x="309" y="25.5" width="46" height="17"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="46" id="KSK-D2-pIr"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="NgO-9e-U1D">
+                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="NgO-9e-U1D">
                                                     <rect key="frame" x="191" y="19" width="94" height="29"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="stepperTouched:" destination="7a1-lN-3Tr" eventType="valueChanged" id="Vsd-Ds-Ive"/>
+                                                    </connections>
                                                 </stepper>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.47450980390000003" green="0.82352941180000006" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="mIM-P5-QqH" firstAttribute="centerY" secondItem="1cu-PA-5qv" secondAttribute="centerY" id="0aQ-an-nKP"/>
+                                                <constraint firstItem="BuI-Cq-yVg" firstAttribute="centerY" secondItem="1cu-PA-5qv" secondAttribute="centerY" id="7XI-wD-qyb"/>
+                                                <constraint firstItem="NgO-9e-U1D" firstAttribute="leading" secondItem="BuI-Cq-yVg" secondAttribute="trailing" constant="15" id="SI2-2F-Cj1"/>
+                                                <constraint firstItem="BuI-Cq-yVg" firstAttribute="leading" secondItem="1cu-PA-5qv" secondAttribute="leadingMargin" constant="10" id="Zfd-ie-Ska"/>
+                                                <constraint firstItem="mIM-P5-QqH" firstAttribute="leading" secondItem="NgO-9e-U1D" secondAttribute="trailing" constant="24" id="dle-RF-56s"/>
+                                                <constraint firstItem="mIM-P5-QqH" firstAttribute="trailing" secondItem="1cu-PA-5qv" secondAttribute="trailingMargin" id="fhp-1k-JLi"/>
+                                                <constraint firstItem="NgO-9e-U1D" firstAttribute="centerY" secondItem="1cu-PA-5qv" secondAttribute="centerY" id="zhd-jQ-mdl"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="itemLabel" destination="BuI-Cq-yVg" id="owh-bt-RqE"/>
+                                            <outlet property="quantityLabel" destination="mIM-P5-QqH" id="Lun-1s-5Gd"/>
+                                            <outlet property="stepper" destination="NgO-9e-U1D" id="92S-yv-k8f"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="A6I-Wv-Z2I"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="5Zz-tv-Kbm"/>
+                                </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U5e-3r-qXy">
                                 <rect key="frame" x="16" y="617" width="120" height="40"/>
@@ -122,6 +142,9 @@
                                 <state key="normal" title="Save">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="saveButtonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rSI-SD-69c"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EM5-GL-Bjc">
                                 <rect key="frame" x="239" y="617" width="120" height="40"/>
@@ -133,6 +156,9 @@
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="cancelButtonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iLk-uW-Pfi"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -166,7 +192,17 @@
                             <constraint firstItem="raF-sK-DgH" firstAttribute="top" secondItem="eOH-aW-aPg" secondAttribute="bottom" constant="4" id="zSC-6u-lKp"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Create Shopping List" id="m8c-3x-jr4"/>
+                    <navigationItem key="navigationItem" title="Create Shopping List" id="m8c-3x-jr4">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="19s-sb-SBW">
+                            <connections>
+                                <action selector="topAddButtonTouched:" destination="BYZ-38-t0r" id="kwX-NN-VvZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="shoppingListName" destination="mLH-ew-CQG" id="lgY-Cj-0Oc"/>
+                        <outlet property="tableView" destination="gGz-ye-FoE" id="5Y8-bg-Vin"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

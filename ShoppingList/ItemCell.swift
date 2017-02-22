@@ -9,6 +9,12 @@
 import UIKit
 
 class ItemCell: UITableViewCell {
+    
+    @IBOutlet weak var itemLabel: UILabel!
+    @IBOutlet weak var stepper: UIStepper!
+    @IBOutlet weak var quantityLabel: UILabel!
+    
+    var tapStepper:((ItemCell) -> Void)?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,5 +26,10 @@ class ItemCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    @IBAction func stepperTouched(_ sender: UIStepper) {
+        tapStepper?(self)
+    }
+    
 
 }
