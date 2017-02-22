@@ -58,6 +58,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                                         let item = Item(name: text)
                                         
                                         self.items.append(item)
+                                        self.tableView.reloadData()
         }
         
         let cancelAction = UIAlertAction(title: "Cancel",
@@ -79,8 +80,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     @IBAction func saveButtonTouched(_ sender: UIButton) {
-//        let ref = FIRDatabase.database().reference().child("MyShoppingList")
-        
         
         for item in items {
             if let name = item.name {
