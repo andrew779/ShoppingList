@@ -27,6 +27,7 @@ class ItemCell: UITableViewCell {
         
     }
 
+    // Mark: delegate to handle swipe to right
     func swiped(_ sender: UISwipeGestureRecognizer){
         swipeDelegate?.myTableDelegate(self)
     }
@@ -37,6 +38,7 @@ class ItemCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    // Mark: using closure to handle stepper event
     @IBAction func stepperTouched(_ sender: UIStepper) {
         tapStepper?(self)
     }
@@ -44,7 +46,7 @@ class ItemCell: UITableViewCell {
    
 
 }
-
+// Mark: Custom protocol
 protocol MyTableDelegate {
     func myTableDelegate(_ cell:ItemCell)
 }

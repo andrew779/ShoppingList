@@ -13,7 +13,6 @@ import FirebaseDatabase
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,UIGestureRecognizerDelegate, MyTableDelegate {
 
     var ref:FIRDatabaseReference!
-    
     let cellId = "cell"
     
     @IBOutlet weak var shoppingListName: UITextField!
@@ -28,6 +27,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
 
+    // MARK: LOAD DATA FROM FIREBASE
     func observeItems(){
         
         ref.observe(.value, with: { (snapshot) in
@@ -46,6 +46,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         
     }
+    
+    // MARK: ADD NEW ITEM TO LIST
     @IBAction func topAddButtonTouched(_ sender: UIBarButtonItem) {
         let alert = UIAlertController(title: "Grocery Item",
                                       message: "Add an Item",
@@ -74,32 +76,32 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
+    // MARK: CHANGE QUANTITY VALUE
     func stepperTaped(_ cell:ItemCell){
         guard let indexPath = tableView.indexPath(for: cell) else{return}
         items[indexPath.row].quantity = Int(cell.stepper.value)
         tableView.reloadData()
     }
     
+    // MARK: UPLOAD DATA TO FIREBASE
     @IBAction func saveButtonTouched(_ sender: UIButton) {
-        
         for item in items {
             if let name = item.name {
                 let quantity = item.quantity
                 let values = [name: quantity] as [String : Any]
                 ref.updateChildValues(values)
             }
-            
         }
-        
         
     }
     
-    
+    // MARK: RESET LIST
     @IBAction func cancelButtonTouched(_ sender: UIButton) {
         items.removeAll()
         tableView.reloadData()
     }
     
+    // MARK: Using delegate to handle swipe
     func myTableDelegate(_ cell: ItemCell) {
         
         let alert = UIAlertController(title: "Favourite", message: "Add favourite or cancel it ?", preferredStyle: .alert)
@@ -111,19 +113,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         alert.addAction(UIAlertAction(title: "Favourite", style: .default, handler: { (action) in
             
             cell.accessoryType = .checkmark
-            
-//            self.tableView.reloadData()
         }))
         
         self.present(alert, animated: true, completion: nil)
-
-        
         
     }
-    
-    
-        
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
