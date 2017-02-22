@@ -3,13 +3,14 @@
 //  ShoppingList
 //
 //  Created by Wenzhong Zheng on 2017-02-21.
+//  StudentID 300909195
 //  Copyright © 2017 Wenzhong. All rights reserved.
 //
 
 import UIKit
 import FirebaseDatabase
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,UIGestureRecognizerDelegate, MyTableDelegate {
 
     var ref:FIRDatabaseReference!
     
@@ -99,6 +100,31 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.reloadData()
     }
     
+    func myTableDelegate(_ cell: ItemCell) {
+        
+        let alert = UIAlertController(title: "Favourite", message: "Add favourite or cancel it ?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
+            
+            cell.accessoryType = .none
+            
+        }))
+        alert.addAction(UIAlertAction(title: "Favourite", style: .default, handler: { (action) in
+            
+            cell.accessoryType = .checkmark
+            
+//            self.tableView.reloadData()
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+
+        
+        
+    }
+    
+    
+        
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
@@ -114,6 +140,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             cell.stepper.value = Double(quantity)
         }
         
+        cell.swipeDelegate = self
         
         cell.tapStepper = {(cell) in
             self.stepperTaped(cell)
